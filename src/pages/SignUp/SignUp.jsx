@@ -95,12 +95,12 @@ const SignUp = () => {
                                     required: true,
                                     minLength: 6,
                                   
-                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                                 
                                 })} placeholder="password" className="input input-bordered" />
                                 {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
                                 {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
                                
-                                {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
+                                
                                
                             </div>
                             <div className="form-control">
@@ -111,12 +111,12 @@ const SignUp = () => {
                                     required: true,
                                     minLength: 6,
                                   
-                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                                  
                                 })} placeholder="password" className="input input-bordered" />
                                 {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
                                 {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
                                
-                                {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
+                              
                                
                             </div>
                             <div className="form-control mt-6">

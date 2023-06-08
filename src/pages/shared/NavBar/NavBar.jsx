@@ -20,6 +20,17 @@ const NavBar = () => {
         <li className="font-medium"><Link to='/instructor'>Instructors</Link> </li>
         <li className=""><Link to='/class'>classes</Link> </li>
 
+         {
+            user? <>
+               <li className="font-medium"><Link to='/dashboard'>Dashboard</Link> </li>
+            </>:
+            <>
+            
+            </>
+             
+         }
+        
+
 
 
     </>
