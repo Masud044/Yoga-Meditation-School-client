@@ -1,24 +1,23 @@
 
-import { useContext, useEffect, useState } from 'react';
-import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+
 import { AuthContext } from '../../provider/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2'
 import GoogleLogin from '../shared/GoogleLogin/GoogleLogin';
+import { useContext } from 'react';
+
+
 const Login = () => {
 
-    const [disabled, setDisabled] = useState(true);
+   
     const { signIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
     const from = location.state?.from?.pathname || "/";
 
-    useEffect(() => {
-        loadCaptchaEnginge(6);
-    }, [])
-
+   
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
@@ -42,15 +41,7 @@ const Login = () => {
             })
     }
 
-    const handleValidateCaptcha = (e) => {
-        const user_captcha_value = e.target.value;
-        if (validateCaptcha(user_captcha_value)) {
-            setDisabled(false);
-        }
-        else {
-            setDisabled(true)
-        }
-    }
+   
 
     return (
         <div>
@@ -78,14 +69,7 @@ const Login = () => {
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <LoadCanvasTemplate />
-                                </label>
-                                <input onBlur={handleValidateCaptcha} type="text" name="captcha" placeholder="type the captcha above" className="input input-bordered" />
-
-                            </div>
-                       
+                           
                             <div className="form-control mt-6">
                                 <input disabled={false} className="btn btn-primary" type="submit" value="Login" />
                             </div>
