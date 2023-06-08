@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import Banner from "../Banner/Banner";
 import ClassSection from "../ClassSection/ClassSection";
 import InstructorSection from "../InstructorSection/InstructorSection";
+import ExtraSection from "../ExtraSection";
 
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
                <Banner></Banner>
                <ClassSection></ClassSection>
                <InstructorSection></InstructorSection>
+               <ExtraSection></ExtraSection>
         </div>
     );
 };
