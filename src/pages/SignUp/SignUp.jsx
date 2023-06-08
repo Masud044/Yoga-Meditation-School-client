@@ -15,7 +15,7 @@ const SignUp = () => {
 
     const onSubmit = data => {
       console.log(data);
-        createUser(data.email, data.password)
+        createUser(data.email, data.password,data.password)
             .then(result => {
 
                 const loggedUser = result.user;
@@ -101,15 +101,29 @@ const SignUp = () => {
                                 {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
                                
                                 {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
+                               
+                            </div>
+                            <div className="form-control">
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                    <span className="label-text">Confirm Password</span>
                                 </label>
+                                <input type="password"  {...register("password", {
+                                    required: true,
+                                    minLength: 6,
+                                  
+                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                                })} placeholder="password" className="input input-bordered" />
+                                {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
+                                {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
+                               
+                                {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
+                               
                             </div>
                             <div className="form-control mt-6">
                                 <input className="btn btn-primary" type="submit" value="Sign Up" />
                             </div>
                         </form>
-                        <p><small>Already have an account? <Link to="/login">Login</Link></small></p>
+                        <p><small className="font-medium text-center">Already have an account? <Link to="/login">Login</Link></small></p>
                       
                     </div>
                 </div>
