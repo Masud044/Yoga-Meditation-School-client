@@ -1,0 +1,163 @@
+[
+    {
+        "_id":1,
+      "image": "https://i.ibb.co/wSXtRTQ/images-15.jpg",
+      "className": "Hatha Yoga Basics",
+      "instructorName": "Sarah Johnson",
+      "availableSeats": 30,
+      "price": 20
+    },
+    {
+        "_id":2,
+      "image": "https://i.ibb.co/T8vcXDG/images-16.jpg",
+      "className": "Vinyasa Flow",
+      "instructorName": "Michael Smith",
+      "availableSeats": 40,
+      "price": 25
+    },
+    {
+        "_id":3,
+      "image": "https://i.ibb.co/5jC315D/images-17.jpg",
+      "className": "Kundalini Yoga",
+      "instructorName": "Emma Thompson",
+      "availableSeats": 45,
+      "price": 18
+    },
+    {
+        "_id":4,
+      "image": "https://i.ibb.co/wcvBH0J/download-8.jpg",
+      "className": "Restorative Yoga",
+      "instructorName": "David Wilson",
+      "availableSeats": 35,
+      "price": 22
+    },
+    {
+        "_id":5,
+      "image": "https://i.ibb.co/wzvj8Qn/download-9.jpg",
+      "className": "Yin Yoga",
+      "instructorName": "Olivia Davis",
+      "availableSeats": 42,
+      "price": 20
+    },
+    {
+        "_id":6,
+      "image": "https://i.ibb.co/4jXnXw1/images-10.jpg",
+      "className": "Ashtanga Yoga",
+      "instructorName": "Mark Thompson",
+      "availableSeats": 50,
+      "price": 25
+    },
+    {
+        "_id":7,
+      "image": "https://i.ibb.co/khv5K2m/images-1.jpg",
+      "className": "Mindfulness Meditation",
+      "instructorName": "Anna Johnson",
+      "availableSeats": 15,
+      "price": 20
+    },
+    {
+        "_id":8,
+      "image": "https://i.ibb.co/421mNBD/images-2.jpg",
+      "className": "Guided Visualization",
+      "instructorName": "James Miller",
+      "availableSeats": 20,
+      "price": 18
+    },
+    {
+        "_id":9,
+      "image": "https://i.ibb.co/dr5tDMS/images-3.jpg",
+      "className": "Breathwork Meditation",
+      "instructorName": "Emily Davis",
+      "availableSeats": 12,
+      "price": 22
+    },
+    {
+        "_id":10,
+      "image": "https://i.ibb.co/F5VW4jv/images-4.jpg",
+      "className": "Yoga Nidra",
+      "instructorName": "Laura Wilson",
+      "availableSeats": 18,
+      "price": 20
+    },
+    {
+        "_id":11,
+      "image": "https://i.ibb.co/C8xGZ1H/images-5.jpg",
+      "className": "Power Vinyasa",
+      "instructorName": "John Thompson",
+      "availableSeats": 10,
+      "price": 25
+    },
+    {
+        "_id":12,
+      "image": "https://i.ibb.co/wWBR5K0/images-6.jpg",
+      "className": "Gentle Yoga",
+      "instructorName": "Maria Johnson",
+      "availableSeats": 15,
+      "price": 20
+    },
+    {
+        "_id":13,
+      "image": "https://i.ibb.co/74m7z6y/images-7.jpg",
+      "className": "Yin Yang Yoga",
+      "instructorName": "Daniel Miller",
+      "availableSeats": 20,
+      "price": 18
+    },
+    {
+        "_id":14,
+      "image": "https://i.ibb.co/hXFRfyK/images-11.jpg",
+      "className": "Mindful Movement",
+      "instructorName": "Emma Davis",
+      "availableSeats": 12,
+      "price": 22
+    },
+    {
+        "_id":15,
+      "image": "https://i.ibb.co/9hqVb0t/images-14.jpg",
+      "className": "Meditation for Beginners",
+      "instructorName": "Sarah Wilson",
+      "availableSeats": 15,
+      "price": 20
+    },
+    {
+        "_id":16,
+      "image": "https://i.ibb.co/V3ppSMM/images-17.jpg",
+      "className": "Yoga for Flexibility",
+      "instructorName": "Michael Johnson",
+      "availableSeats": 10,
+      "price": 25
+    },
+    {
+        "_id":17,
+      "image": "https://i.ibb.co/gZ67fB3/images-25.jpg",
+      "className": "Yoga for Stress Relief",
+      "instructorName": "Olivia Thompson",
+      "availableSeats": 20,
+      "price": 18
+    },
+    {
+        "_id":18,
+      "image": "https://i.ibb.co/JyZ7KtJ/images.jpg",
+      "className": "Meditation for Inner Peace",
+      "instructorName": "David Davis",
+      "availableSeats": 12,
+      "price": 22
+    },
+    {
+        "_id":19,
+      "image": "https://i.ibb.co/k2GVw24/images-21.jpg",
+      "className": "Yoga for Strength",
+      "instructorName": "Emma Wilson",
+      "availableSeats": 18,
+      "price": 20
+    },
+    {
+        "_id":20,
+      "image": "https://i.ibb.co/nBSPh8k/images-24.jpg",
+      "className": "Yoga for Back Pain",
+      "instructorName": "Daniel Johnson",
+      "availableSeats": 10,
+      "price": 25
+    }
+    
+]  
