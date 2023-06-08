@@ -5,7 +5,9 @@ import AllInstructor from "../pages/shared/AllInstructor/AllInstructor";
 import AllClasses from "../pages/shared/AllClasses/AllClasses";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
-import Dashboard from "../pages/Dashboard/Dashboard";
+import Dashboard from "../Layouts/Dashboard";
+import MyClass from "../pages/Dashboard/MyClass/MyClass";
+
 
 export const router = createBrowserRouter([
     {
@@ -38,6 +40,12 @@ export const router = createBrowserRouter([
     },
     {
       path:'dashboard',
-      element:<Dashboard></Dashboard>
+      element:<Dashboard></Dashboard>,
+      children:[
+         {
+          path:'myclass',
+          element:<MyClass></MyClass>
+         }
+      ]
     }
   ]);
