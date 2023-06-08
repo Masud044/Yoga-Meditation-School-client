@@ -20,8 +20,9 @@ const SignUp = () => {
 
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                console.log(data.name,data.photoURL)
 
-                // updateUserProfile(data.name, data.photoURL)
+                updateUserProfile(data.name, data.photoURL)
             //         .then(() => {
             //             const saveUser = { name: data.name, email: data.email }
             //             fetch('https://bistro-boss-server-fawn.vercel.app/users', {
@@ -49,7 +50,7 @@ const SignUp = () => {
 
 
             //         })
-            //         .catch(error => console.log(error))
+                    .catch(error => console.log(error))
             })
     };
 
