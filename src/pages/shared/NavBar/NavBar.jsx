@@ -55,6 +55,17 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end ">
+                {
+                    user && <div className='mr-2'>
+
+                        <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
+
+                            <img className='rounded-full w-10 h-9' src={user.photoURL} alt="" />
+                        </div>
+
+                    </div>
+
+                }
 
                     {
                         user ? <>
