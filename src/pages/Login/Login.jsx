@@ -5,13 +5,15 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2'
 import GoogleLogin from '../shared/GoogleLogin/GoogleLogin';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import { FaEye } from 'react-icons/fa';
 
 
 const Login = () => {
 
    
     const { signIn } = useContext(AuthContext);
+    const [passwordShown, setPasswordShown] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -40,6 +42,10 @@ const Login = () => {
                 navigate(from, { replace: true });
             })
     }
+    const togglePassword = () => {
+       
+        setPasswordShown(!passwordShown);
+      };
 
    
 
@@ -64,14 +70,17 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" name="password" placeholder="password" className="input input-bordered" />
-                                <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                                </label>
+                                 <div className='flex '>
+                                 <input   type={passwordShown ? "text" : "password"} name="password"   placeholder="password" className="input input-bordered"   />
+                                 <FaEye className='mt-3 ml-6' onClick={togglePassword}></FaEye>
+                               
+                                 </div>
+                               
+                               
                             </div>
                            
                             <div className="form-control mt-6">
-                                <input disabled={false} className="btn btn-primary" type="submit" value="Login" />
+                                <input  className="btn btn-primary" type="submit" value="Login" />
                             </div>
                         </form>
                         <p className="text-center font-medium"><small >New Here? <Link to="/signup">Create an account</Link> </small></p>
