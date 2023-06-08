@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
+import GoogleLogin from "../shared/GoogleLogin/GoogleLogin";
 
 
 
@@ -51,6 +52,7 @@ const SignUp = () => {
 
             //         })
                     .catch(error => console.log(error))
+                    navigate('/');
             })
     };
 
@@ -125,6 +127,8 @@ const SignUp = () => {
                             </div>
                         </form>
                         <p><small className="font-medium text-center">Already have an account? <Link to="/login">Login</Link></small></p>
+
+                        <GoogleLogin></GoogleLogin>
                       
                     </div>
                 </div>
