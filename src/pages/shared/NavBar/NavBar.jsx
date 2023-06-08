@@ -33,8 +33,8 @@ const NavBar = () => {
                     {navOptions}
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <a className="btn">Get started</a>
+                <div className="navbar-end ">
+                    <a className="btn bg-amber-400 text-white">Login</a>
                 </div>
             </div>
         </div>
