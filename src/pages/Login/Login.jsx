@@ -83,7 +83,7 @@ const Login = () => {
                                 <input  className="btn btn-primary" type="submit" value="Login" />
                             </div>
                         </form>
-                        <p className="text-center font-medium"><small >New Here? <Link to="/signup">Create an account</Link> </small></p>
+                        <p className="text-center font-medium text-2xl"><small >New Here? <Link to="/signup">Create an account</Link> </small></p>
                         <GoogleLogin></GoogleLogin>
                      
                     </div>

@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../provider/AuthProvider";
@@ -13,52 +13,71 @@ const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
+   
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [error, setError] = useState('');
+
+
+    const handleConfirmPasswordChange = (e) => {
+        setConfirmPassword(e.target.value);
+        console.log('confirm',e.target.value)
+    };
 
     const onSubmit = data => {
-      console.log(data);
-        createUser(data.email, data.password,data.password)
+        console.log(data);
+       
+        if (data.password != confirmPassword) {
+            setError('Passwords do not match!');
+              return;
+          }
+            createUser(data.email, data.password)
             .then(result => {
+               
 
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                console.log(data.name,data.photoURL)
+                console.log(data.name, data.photoURL)
 
                 updateUserProfile(data.name, data.photoURL)
-            //         .then(() => {
-            //             const saveUser = { name: data.name, email: data.email }
-            //             fetch('https://bistro-boss-server-fawn.vercel.app/users', {
-            //                 method: 'POST',
-            //                 headers: {
-            //                     'content-type': 'application/json'
-            //                 },
-            //                 body: JSON.stringify(saveUser)
-            //             })
-            //                 .then(res => res.json())
-            //                 .then(data => {
-            //                     if (data.insertedId) {
-            //                         reset();
-            //                         Swal.fire({
-            //                             position: 'top-end',
-            //                             icon: 'success',
-            //                             title: 'User created successfully.',
-            //                             showConfirmButton: false,
-            //                             timer: 1500
-            //                         });
-            //                         navigate('/');
-            //                     }
-            //                 })
+              
+                    //         .then(() => {
+                    //             const saveUser = { name: data.name, email: data.email }
+                    //             fetch('https://bistro-boss-server-fawn.vercel.app/users', {
+                    //                 method: 'POST',
+                    //                 headers: {
+                    //                     'content-type': 'application/json'
+                    //                 },
+                    //                 body: JSON.stringify(saveUser)
+                    //             })
+                    //                 .then(res => res.json())
+                    //                 .then(data => {
+                    //                     if (data.insertedId) {
+                    //                         reset();
+                    //                         Swal.fire({
+                    //                             position: 'top-end',
+                    //                             icon: 'success',
+                    //                             title: 'User created successfully.',
+                    //                             showConfirmButton: false,
+                    //                             timer: 1500
+                    //                         });
+                    //                         navigate('/');
+                    //                     }
+                    //                 })
 
 
 
-            //         })
+                    //         })
                     .catch(error => console.log(error))
-                    navigate('/');
+                navigate('/');
             })
-    };
+    }
 
+          
+        
+       
     return (
         <div>
-             <Helmet>
+            <Helmet>
                 <title>Yoga | Sign Up</title>
             </Helmet>
             <div className="hero min-h-screen bg-base-200">
@@ -97,39 +116,36 @@ const SignUp = () => {
                                 <input type="password"  {...register("password", {
                                     required: true,
                                     minLength: 6,
-                                  
-                                 
-                                })} placeholder="password" className="input input-bordered" />
+
+
+                                })} placeholder="password"  className="input input-bordered" />
                                 {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
                                 {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
-                               
-                                
-                               
+
+
+
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Confirm Password</span>
                                 </label>
-                                <input type="password"  {...register("password", {
-                                    required: true,
-                                    minLength: 6,
+                                <input onChange={handleConfirmPasswordChange} type="password"  placeholder="password" className="input input-bordered" />
+                                {error && <p className="text-red-600">{error}</p>}
+                                
                                   
-                                  
-                                })} placeholder="password" className="input input-bordered" />
-                                {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
-                                {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
                                
-                              
-                               
+
+
+
                             </div>
                             <div className="form-control mt-6">
                                 <input className="btn btn-primary" type="submit" value="Sign Up" />
                             </div>
                         </form>
-                        <p><small className="font-medium text-center">Already have an account? <Link to="/login">Login</Link></small></p>
+                        <p className="font-medium text-center text-2xl"><small >Already have an account? <Link to="/login">Login</Link></small></p>
 
                         <GoogleLogin></GoogleLogin>
-                      
+
                     </div>
                 </div>
             </div>
