@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 
 import { NavLink, Outlet } from "react-router-dom";
 import NavBar from "../pages/shared/NavBar/NavBar";
-import { FaBook, FaHome, FaShoppingCart, FaUsers, FaUtensils, FaWallet } from "react-icons/fa";
+import { FaBook, FaChild, FaHistory, FaHome, FaShoppingCart, FaUsers, FaUtensils, FaWallet } from "react-icons/fa";
 import Footer from "../pages/shared/Footer/Footer";
 
 
@@ -11,7 +11,7 @@ const Dashboard = () => {
     return (
         <div>
 
-          <NavBar></NavBar>
+          {/* <NavBar></NavBar> */}
             <Helmet><title>Yoga|dashboard</title></Helmet>
 
 
@@ -34,10 +34,12 @@ const Dashboard = () => {
                             
                      
                             <li><NavLink to="/"><FaHome></FaHome> User Home</NavLink></li>
+                            <li><NavLink to="/"><FaHistory></FaHistory> Payment History</NavLink></li>
+                            <li><NavLink to="/"><FaBook></FaBook> Enroll Class</NavLink></li>
                            
-                            <li><NavLink to="/"><FaWallet></FaWallet> Payment History</NavLink></li>
+                            <li><NavLink to="/dashboard/payment"><FaWallet></FaWallet> Payment</NavLink></li>
                             <li>
-                                <NavLink to="/dashboard/myclass"><FaShoppingCart></FaShoppingCart> My class
+                                <NavLink to="/dashboard/myclass"><FaChild></FaChild> My class
                                    
                                 </NavLink>
 
@@ -46,7 +48,7 @@ const Dashboard = () => {
 
                 </div>
             </div>
-            <Footer></Footer>
+            {/* <Footer></Footer> */}
         </div>
     );
 };

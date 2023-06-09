@@ -1,34 +1,69 @@
 import { Helmet } from "react-helmet-async";
 import useMyClass from "../../../Hooks/useMyClass";
+import { FaTrashAlt } from "react-icons/fa";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const MyClass = () => {
 
-    const [Class] = useMyClass();
+    const [cart, refetch] = useMyClass();
+
+    const handleDelete = item => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/myclass/${item._id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
+
+    }
     return (
-        <div>
+        <div className="w-full">
             <Helmet><title>Yoga| my class</title></Helmet>
+
+            <button></button>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
-                    <thead> 
-                        <tr>
+                    <thead>
+                        <tr className="font-bold text-black">
                             <th>
                                 #
                             </th>
-                            <th>Class image</th>
+                            <th >Class image</th>
                             <th>Name</th>
                             <th>Price</th>
-                            <th>AvailableSeat</th>
+
                             <th>Delete</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            Class.map((item,index)=>
-                                <tr key={item._id}>
+                            cart.map((item, index) => <tr key={item._id} >
                                 <td>
-                                    {index+1}
+                                    {index + 1}
                                 </td>
                                 <td>
                                     <div className="flex items-center space-x-3">
@@ -37,26 +72,29 @@ const MyClass = () => {
                                                 <img src={item.image} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
-                                        <div>
-                                            <div className="font-bold">Hart Hagerty</div>
-                                            <div className="text-sm opacity-50">United States</div>
-                                        </div>
+
                                     </div>
                                 </td>
                                 <td>
-                                    Zemlak, Daniel and Leannon
-                                    <br />
-                                    <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                                    {item.className}
                                 </td>
-                                <td>Purple</td>
-                                <th>
-                                    <button className="btn btn-ghost btn-xs">details</button>
-                                </th>
+                                <td>{item.price}</td>
+
+                                <td>
+                                    <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-amber-400  text-black"><FaTrashAlt></FaTrashAlt></button>
+                                </td>
+                                <td>
+                                    <Link to="/dashboard/payment">
+                                        <button className="btn btn-ghost bg-amber-400">PAY</button>
+                                    </Link>
+                                </td>
                             </tr>)
                         }
-                       
-                        </tbody>
-                     
+
+
+
+                    </tbody>
+
 
                 </table>
             </div>

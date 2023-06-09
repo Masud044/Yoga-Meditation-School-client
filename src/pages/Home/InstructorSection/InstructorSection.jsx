@@ -1,10 +1,11 @@
 
 import InstructorCard from "./InstructorCard";
-import useInstructor from "../../../Hooks/useInstructor";
+
+import useClass from "../../../Hooks/useClass";
 
 
 const InstructorSection = () => {
-         const [instruction] = useInstructor(); 
+         const [classSection] = useClass(); 
    
     return (
         <div className="mt-8"> 
@@ -14,7 +15,7 @@ const InstructorSection = () => {
 
                <div className="grid md:grid-cols-3 gap-6  mt-6 ">
                    {
-                     instruction.slice(0,6).map(instructor=> <InstructorCard key={instructor._id}
+                     classSection.slice(0,6).map(instructor=> <InstructorCard key={instructor._id}
                       instructor = {instructor}
                      
                      ></InstructorCard>)

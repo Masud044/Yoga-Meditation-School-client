@@ -4,14 +4,14 @@ import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 const useMyClass = () => {
      const {user}= useContext(AuthContext);
-     const { isLoading, data: Class = []  } = useQuery({
+     const {refetch, data: cart = []  } = useQuery({
         queryKey: ['myclass', user?.email],
         queryFn: async ()=>{
              const res = await fetch(`http://localhost:5000/myclass?email=${user.email}`)
              return res.json();
         },
       })
-      return [Class, isLoading];
+      return [cart, refetch];
 };
 
 export default useMyClass;

@@ -3,6 +3,7 @@ import useClass from "../../../Hooks/useClass";
 import { AuthContext } from "../../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import {  useLocation, useNavigate } from "react-router-dom";
+import useMyClass from "../../../Hooks/useMyClass";
 
 
 const AllClasses = () => {
@@ -10,6 +11,7 @@ const AllClasses = () => {
     const{user}= useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const[ , refetch] = useMyClass();
 
 
      const handleAddClass=item=>{
@@ -27,6 +29,7 @@ const AllClasses = () => {
               .then(res=>res.json())
               .then(data=>{
                  if(data.insertedId){
+                   refetch();
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',

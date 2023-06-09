@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2'
 import GoogleLogin from '../shared/GoogleLogin/GoogleLogin';
 import { useContext, useState } from 'react';
-import { FaEye } from 'react-icons/fa';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 
 const Login = () => {
@@ -70,11 +70,17 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                 <div className='flex '>
+                                 {/* <div className='flex '> */}
                                  <input   type={passwordShown ? "text" : "password"} name="password"   placeholder="password" className="input input-bordered"   />
-                                 <FaEye className='mt-3 ml-6' onClick={togglePassword}></FaEye>
-                               
+                                 <div className='-mt-11 mx-72'>
+                                    {
+                                        passwordShown? <FaEyeSlash className='mt-3 -ml-6' onClick={togglePassword}></FaEyeSlash>:
+                                        <FaEye className='mt-3 -ml-6' onClick={togglePassword}></FaEye>
+                                    }
                                  </div>
+                                
+                               
+                                 {/* </div> */}
                                
                                
                             </div>
