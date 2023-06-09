@@ -1,7 +1,7 @@
 
 
 const InstructorCard = ({instructor}) => {
-    console.log(instructor);
+    // console.log(instructor);
     const{email,instructorName,instructorImage} = instructor;
     return (
         <div className="card w-96 bg-amber-400 pt-4 hover:bg-amber-300 hover:text-white bg-opacity-20  shadow-2xl">

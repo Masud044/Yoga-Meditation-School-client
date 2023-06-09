@@ -8,6 +8,8 @@ import SignUp from "../pages/SignUp/SignUp";
 import Dashboard from "../Layouts/Dashboard";
 import MyClass from "../pages/Dashboard/MyClass/MyClass";
 import Payment from "../pages/Dashboard/Payment/Payment";
+import ManageUser from "../pages/Dashboard/ManageUser/ManageUser";
+import AddClass from "../pages/Dashboard/AddClass/AddClass";
 
 
 export const router = createBrowserRouter([
@@ -50,7 +52,16 @@ export const router = createBrowserRouter([
          {
           path:'payment',
           element:<Payment></Payment>
+         },
+         {
+          path:'manageuser',
+          element:<ManageUser></ManageUser>
+         },
+         {
+          path:'addclass',
+          element:<AddClass></AddClass>
          }
+       
       ]
     }
   ]);
