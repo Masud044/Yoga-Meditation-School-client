@@ -1,18 +1,19 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const image_hosting_token = import.meta.env.VITE_image_hosting_token;
 
 const AddClass = () => {
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const image_hosting_URL =`https://api.imgbb.com/1/upload?key=${image_hosting_token}`
 
     const{user} = useContext(AuthContext);
     
 
     const onSubmit = data=>{
-        //  console.log(data);
+       
 
          const formData = new FormData();
          formData.append('image', data.image[0])
@@ -23,19 +24,42 @@ const AddClass = () => {
         })
         .then(res => res.json())
         .then(imgResponse => {
-            if(imgResponse.success){
-                reset();
-                const imgURL = imgResponse.data.display_url;
+           console.log(imgResponse);  
+           if(imgResponse.success){
+           const imgURL = imgResponse.data.display_url;
                
-                // console.log(imgURL)
-                const {name, Class, seat,price,email} = data;
-                const newItem = {name,Class,price:parseFloat(price),seat, image:imgURL,email}
-                console.log(newItem)
+                 console.log(data,imgURL)
+           
+                const {instructorName, className, availableSeats,price,email} = data;
+                const newClass = {instructorName,className,price:parseFloat(price),availableSeats:parseFloat(availableSeats), image:imgURL,email,status:"panding"}
+                console.log(newClass)
+           
+
+                fetch('http://localhost:5000/class',{
+                     method:'POST',
+                     headers:{
+                         'content-type':'application/json'
+                     },
+                     body:JSON.stringify(newClass)
+                })
+                 .then(res=>res.json())
+                .then(data=>{
+                    console.log('after posting new menu item', data)
+                    if(data.insertedId){
+                        reset();
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Item added successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                          })
+                    }
+                })
               
                
             }
-        })
-
+         })
     }
     return (
         <div>
@@ -49,7 +73,7 @@ const AddClass = () => {
                     <span className="label-text">Class name</span>
 
                 </label>
-                <input type="text" {...register("Class", { required: true })} placeholder="Type here" className="input input-bordered max-w-5xl " />
+                <input type="text" {...register("className", { required: true })} placeholder="Type here" className="input input-bordered max-w-5xl " />
 
             </div>
             <div className="form-control w-full max-w-xs">
@@ -65,7 +89,7 @@ const AddClass = () => {
                     <span className="label-text">Instructor Name</span>
 
                 </label>
-                <input type='text' {...register("name", { required: true })} placeholder="Type here" className="input input-bordered max-w-5xl " value={user?.displayName} readOnly />
+                <input type='text' {...register("instructorName", { required: true })} placeholder="Type here" className="input input-bordered max-w-5xl " value={user?.displayName} readOnly />
 
             </div>
             <div className="form-control w-full ">
@@ -81,7 +105,7 @@ const AddClass = () => {
                     <span className="label-text">Available seats</span>
 
                 </label>
-                <input type="number" {...register("seat", { required: true })} placeholder="Type here" className="input input-bordered max-w-5xl " />
+                <input type="number" {...register("availableSeats", { required: true })} placeholder="Type here" className="input input-bordered max-w-5xl " />
 
             </div>
             <div className="form-control w-full ">

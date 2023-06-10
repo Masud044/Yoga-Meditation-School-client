@@ -16,8 +16,8 @@ const Dashboard = () => {
     // const { user } = useContext(AuthContext);
     // const instruction = 'ranamasud0701@gmail.com';
    
-    const [isAdmin] =useAdmin();
-    const [isInstructor]=useInstructor();
+    // const [isAdmin] =useAdmin();
+    // const [isInstructor]=useInstructor();
     
     return (
         <div>
@@ -65,7 +65,7 @@ const Dashboard = () => {
                          
                          <li><NavLink to="/"><FaWallet></FaWallet> Instruction Dashboard</NavLink></li>
                                 <li><NavLink to="/dashboard/addclass"><FaWallet></FaWallet> Add Class</NavLink></li>
-                                <li><NavLink to="/"><FaBook></FaBook>My Class </NavLink></li>
+                                <li><NavLink to="/dashboard/instructorclass"><FaBook></FaBook>My Class </NavLink></li>
 
 
                         {/* student dashboard       */}
