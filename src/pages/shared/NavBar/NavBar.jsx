@@ -20,6 +20,7 @@ const NavBar = () => {
         <li className="font-medium"><Link to='/'>Home</Link> </li>
         <li className="font-medium"><Link to='/instructor'>Instructors</Link> </li>
         <li className=""><Link to='/class'>classes</Link> </li>
+        
 
          {
             user? <>
@@ -36,7 +37,7 @@ const NavBar = () => {
 
     </>
     return (
-        <div className="mx-auto container">
+        <div className="container mx-auto">
 
             <div className="navbar fixed z-10 bg-opacity-30 max-w-screen-xl  bg-black text-white">
                 <div className="navbar-start">

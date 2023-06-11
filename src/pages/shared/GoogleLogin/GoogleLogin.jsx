@@ -1,6 +1,6 @@
 
 import { useContext } from "react";
-import { FaGoogle } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -17,7 +17,7 @@ const GoogleLogin = () => {
             .then(result => {
                 const loggedInUser = result.user;
                 console.log(loggedInUser);
-                const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email }
+                const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email, image: loggedInUser.photoURL }
                 fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {
@@ -36,8 +36,8 @@ const GoogleLogin = () => {
         <div>
         <div className="divider"></div>
         <div className="w-full text-center my-4">
-            <button onClick={handleGoogleSignIn} className="btn btn-circle btn-outline">
-                <FaGoogle></FaGoogle>
+            <button onClick={handleGoogleSignIn} className="btn btn-circle btn-outline ">
+                <FcGoogle className="text-3xl"></FcGoogle>
             </button>
         </div>
     </div>

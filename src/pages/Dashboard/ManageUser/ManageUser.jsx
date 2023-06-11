@@ -42,20 +42,35 @@ const ManageUser = () => {
         .then(data=>{
             console.log(data)
             if(data.modifiedCount){
-              refetch();
-              Swal.fire({
-                  position: 'top-end',
-                  icon: 'success',
-                  title: `${user.name} is an Instructor`,
-                  showConfirmButton: false,
-                  timer: 1500
+                const instructoruser ={name: user.name, email: user.email, image: user.image}
+                console.log(instructoruser)
+              fetch('http://localhost:5000/instructor',{
+                 method:'POST',
+                 headers:{
+                    'content-type':'application/json'
+                 },
+                 body:JSON.stringify(instructoruser)
+
                 })
+                .then(res=>res.json())
+                .then(data=>{
+                    if(data.insertedId){
+                        // refetch();
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: `${user.name} is an Instructor`,
+                            showConfirmButton: false,
+                            timer: 1500
+                          })
+                    }
+                })
+              
+             
             }
         })
     } 
-    const handleDelete=user=>{
-
-    }
+   
    
 
     return (
@@ -73,7 +88,7 @@ const ManageUser = () => {
                             <th className="font-bold text-black">Email</th>
                             <th className="font-bold text-black">Make Admin</th>
                             <th className="font-bold text-black">Make Instructor</th>
-                            <th className="font-bold text-black">Action</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
@@ -88,7 +103,7 @@ const ManageUser = () => {
                                 <td>{ user.role === 'instructor' ? 'instructor' :
                                     <button onClick={() => handleMakeInstructor(user)} className="btn btn-ghost bg-orange-600  text-white"><FaUserShield></FaUserShield></button> 
                                     }</td>
-                                <td><button onClick={() => handleDelete(user)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button></td>
+                             
                             </tr>)
                         }
                         

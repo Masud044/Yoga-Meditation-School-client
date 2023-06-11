@@ -5,7 +5,7 @@ import useInstructorClass from "../../../Hooks/useInstructorClass";
 const InstructorClass = () => {
 
        const [instructor]= useInstructorClass();
-       console.log(instructor)
+    //    console.log(instructor)
     return (
         <div className="w-full px-6">
              <h2 className="font-bold text-3xl  text-center mb-4">TOTAL ADD CLASS: {instructor.length}</h2>

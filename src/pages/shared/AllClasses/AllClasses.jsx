@@ -1,21 +1,30 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import useClass from "../../../Hooks/useClass";
 import { AuthContext } from "../../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import {  useLocation, useNavigate } from "react-router-dom";
 import useMyClass from "../../../Hooks/useMyClass";
+import useAdmin from "../../../Hooks/useAdmin";
+import useInstructor from "../../../Hooks/useInstructor";
 
 
 const AllClasses = () => {
+  const [isDisabled, setIsDisabled] = useState(false);
     const [classSection] = useClass();
     const{user}= useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const[ , refetch] = useMyClass();
 
+    const [isAdmin] =useAdmin();
+    const [isInstructor] = useInstructor();
+
+    const disabled = isAdmin?.admin || isInstructor?.instructor;
+
 
      const handleAddClass=item=>{
         const{image,className,price,_id}= item;
+         
           console.log(image);
           if(user && user.email){
             const classitem = {ClassID:_id,image,className,price,email:user?.email}
@@ -59,7 +68,8 @@ const AllClasses = () => {
     return (
         <div className="grid md:grid-cols-3 gap-4">
               {
-                classSection.map(item=><div key={item._id} className="card w-96 pt-4 bg-amber-400 bg-opacity-20 hover:bg-amber-300  hover:text-white shadow-2xl">
+                classSection.map(item=><div key={item._id} className="card w-96 pt-4 bg-amber-400 bg-opacity-20 hover:bg-amber-300  hover:text-white shadow-2xl mt-20">
+                 
                 <figure><img className="rounded-full" src={item.image} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title text-2xl">Yoga-Class: {item.className}</h2>
@@ -67,7 +77,12 @@ const AllClasses = () => {
                      <p className="font-medium">AvailableSeat:{item.availableSeats}</p>
                     <p className="font-medium">Instructor: {item.instructorName}</p>
                     <div className="card-actions justify-end">
-                        <button onClick={()=> handleAddClass(item)} className="btn bg-amber-400 text-white">Add Class</button>
+                      {
+                        disabled ? <button disabled={!isDisabled}  onClick={()=> handleAddClass(item)}     className="btn bg-amber-400 text-white">Add Class</button>
+                         :
+                        <button  onClick={()=> handleAddClass(item)}     className="btn bg-amber-400 text-white">Add Class</button>
+                      }
+                       
                     </div>
                 </div>
             </div>)

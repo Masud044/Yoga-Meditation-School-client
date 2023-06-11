@@ -42,8 +42,8 @@ const MyClass = () => {
         <div className="w-full">
             <Helmet><title>Yoga| my class</title></Helmet>
 
-            <button></button>
-            <div className="overflow-x-auto">
+          
+            <div className="overflow-x-auto mt-20">
                 <table className="table">
                     {/* head */}
                     <thead>

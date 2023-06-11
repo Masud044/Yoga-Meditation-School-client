@@ -8,7 +8,7 @@ const useInstructorClass = () => {
      const {refetch, data: instructor = []  } = useQuery({
         queryKey: ['class', user?.email],
         queryFn: async ()=>{
-             const res = await fetch(`http://localhost:5000/class/${user.email}`,)
+             const res = await fetch(`http://localhost:5000/class/${user?.email}`,)
              return res.json();
         },
       })

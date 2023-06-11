@@ -20,8 +20,10 @@ const SignUp = () => {
 
     const handleConfirmPasswordChange = (e) => {
         setConfirmPassword(e.target.value);
+       
         // console.log('confirm',e.target.value)
     };
+   
 
     const onSubmit = data => {
         console.log(data);
@@ -41,7 +43,7 @@ const SignUp = () => {
                 updateUserProfile(data.name, data.photoURL)
               
                             .then(() => {
-                                const saveUser = { name: data.name, email: data.email }
+                                const saveUser = { name: data.name, email: data.email, image: data.photoURL }
                                 fetch('http://localhost:5000/users', {
                                     method: 'POST',
                                     headers: {
@@ -81,10 +83,10 @@ const SignUp = () => {
                 <title>Yoga | Sign Up</title>
             </Helmet>
             <div className="hero min-h-screen bg-base-200">
-                <div className="hero-content flex-col lg:flex-row-reverse">
+                <div className="hero-content flex-col ">
                     <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Sign up now!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                        <h1 className="text-5xl font-bold">Sign up</h1>
+                      
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -116,12 +118,13 @@ const SignUp = () => {
                                 <input type="password"  {...register("password", {
                                     required: true,
                                     minLength: 6,
+                                 
 
 
                                 })} placeholder="password"  className="input input-bordered" />
                                 {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
                                 {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
-
+                               
 
 
                             </div>
