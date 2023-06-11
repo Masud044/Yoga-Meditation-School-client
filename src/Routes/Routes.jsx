@@ -13,9 +13,16 @@ import AddClass from "../pages/Dashboard/AddClass/AddClass";
 
 import InstructorClass from "../pages/Dashboard/InstructorClass/InstructorClass";
 import ManageClass from "../pages/Dashboard/ManageClass/ManageClass";
+import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
+import EnrollClass from "../pages/Dashboard/EnrollClass/EnrollClass";
+import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 
 
 export const router = createBrowserRouter([
+   {
+     path:'*',
+     element:<NotFoundPage></NotFoundPage>
+   },
     {
       path: "/",
       element: <Main></Main>,
@@ -51,6 +58,14 @@ export const router = createBrowserRouter([
          {
           path:'myclass',
           element:<MyClass></MyClass>
+         },
+         {
+           path:'history',
+           element:<PaymentHistory></PaymentHistory>
+         },
+         {
+          path:'enroll',
+          element:<EnrollClass></EnrollClass>
          },
          {
           path:'payment',

@@ -78,13 +78,13 @@ const MyClass = () => {
                                 <td>
                                     {item.className}
                                 </td>
-                                <td>{item.price}</td>
+                                <td>${item.price}</td>
 
                                 <td>
                                     <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-amber-400  text-black"><FaTrashAlt></FaTrashAlt></button>
                                 </td>
                                 <td>
-                                    <Link to="/dashboard/payment">
+                                    <Link to={`/dashboard/payment?price=${item.price}&_id=${item._id}&ClassID=${item.ClassID}&image=${item.image}&className=${item.className}`}>
                                         <button className="btn btn-ghost bg-amber-400">PAY</button>
                                     </Link>
                                 </td>

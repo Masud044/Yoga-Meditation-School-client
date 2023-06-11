@@ -6,6 +6,7 @@ import {  useLocation, useNavigate } from "react-router-dom";
 import useMyClass from "../../../Hooks/useMyClass";
 import useAdmin from "../../../Hooks/useAdmin";
 import useInstructor from "../../../Hooks/useInstructor";
+import {Slide } from "react-awesome-reveal";
 
 
 const AllClasses = () => {
@@ -67,7 +68,9 @@ const AllClasses = () => {
      }
     return (
         <div className="grid md:grid-cols-3 gap-4">
-              {
+            <Slide>
+
+            {
                 classSection.map(item=><div key={item._id} className="card w-96 pt-4 bg-amber-400 bg-opacity-20 hover:bg-amber-300  hover:text-white shadow-2xl mt-20">
                  
                 <figure><img className="rounded-full" src={item.image} alt="Shoes" /></figure>
@@ -87,6 +90,8 @@ const AllClasses = () => {
                 </div>
             </div>)
               }
+            </Slide>
+             
         </div>
     );
 };

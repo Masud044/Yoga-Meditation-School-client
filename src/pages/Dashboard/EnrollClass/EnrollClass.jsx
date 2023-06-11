@@ -1,33 +1,36 @@
+import usePayment from "../../../Hooks/usePayment";
 
-import useInstructorClass from "../../../Hooks/useInstructorClass";
 
+const EnrollClass = () => {
 
-const InstructorClass = () => {
-
-       const [instructor]= useInstructorClass();
-    //    console.log(instructor)
+     const [payment] = usePayment();
     return (
-        <div className="w-full px-6">
-             <h2 className="font-bold text-3xl  text-center mb-4">TOTAL ADD CLASS: {instructor.length}</h2>
-             <div className="overflow-x-auto">
+        <div>
+              <h1 className="font-bold text-3xl text-center"> Enroll Class</h1>
+
+
+              <div className="overflow-x-auto mt-20">
                 <table className="table">
                     {/* head */}
                     <thead>
                         <tr className="font-bold text-black">
-                            <th>
+                            <th className="font-bold text-black">
                                 #
                             </th>
-                            <th >Class image</th>
-                            <th>Name</th>
-                            <th>Status</th>
+                          
+                            <th className="font-bold text-black">ClassImage</th>
+                            <th className="font-bold text-black">ClassName</th>
+                            <th className="font-bold text-black">Email</th>
+                          
+                            <th className="font-bold text-black">Price</th>
 
-                            <th>Enroll student</th>
-                            <th>Feedback</th>
+                            <th className="font-bold text-black">Date</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
                         {
-                           instructor.map((item, index) => <tr key={item._id} >
+                            payment.map((item, index) => <tr key={item._id} >
                                 <td>
                                     {index + 1}
                                 </td>
@@ -41,17 +44,19 @@ const InstructorClass = () => {
 
                                     </div>
                                 </td>
+                               
                                 <td>
                                     {item.className}
                                 </td>
-                                <td>{item.status}</td>
+                                <td>
+                                    {item.email}
+                                </td>
+                                <td>${item.price}</td>
 
                                 <td>
-                                   {item.enroll_student}
+                                   {item.date}
                                 </td>
-                                <td>
-                                   no feedback
-                                </td>
+                                
                             </tr>)
                         }
 
@@ -66,4 +71,4 @@ const InstructorClass = () => {
     );
 };
 
-export default InstructorClass;
+export default EnrollClass;

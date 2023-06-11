@@ -60,10 +60,10 @@ const Dashboard = () => {
 
                           { (!isAdmin?.admin && !isInstructor?.instructor) &&  
                           <>  <li><NavLink to="/"><FaHome></FaHome> User Home</NavLink></li>
-                                <li><NavLink to="/"><FaHistory></FaHistory> Payment History</NavLink></li>
-                                <li><NavLink to="/"><FaBook></FaBook> Enroll Class</NavLink></li>
+                                <li><NavLink to="/dashboard/history"><FaHistory></FaHistory> Payment History</NavLink></li>
+                                <li><NavLink to="/dashboard/enroll"><FaBook></FaBook> Enroll Class</NavLink></li>
         
-                                <li><NavLink to="/dashboard/payment"><FaWallet></FaWallet> Payment</NavLink></li>
+                                
                                 <li>
                                     <NavLink to="/dashboard/myclass"><FaChild></FaChild>
                                        Selected Class
