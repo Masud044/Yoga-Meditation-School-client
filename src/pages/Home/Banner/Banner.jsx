@@ -15,7 +15,7 @@ const Banner = () => {
                 <a href="#slide3" className="btn btn-circle  bg-amber-400">❮</a>
                 <div>
                     <h1 className="animate__animated animate__backInLeft font-semibold text-3xl text-white mb-4">Our best <br /> Gym Fitness <span className="text-amber-400 ">with Your Body</span> </h1>
-                    <div className="space-x-8">
+                    <div className="md:space-x-8 space-x-2 ">
                         <button className="btn ease-in duration-300 bg-amber-400 text-white">Get started</button>
                         <button className="btn ease-in duration-300  btn-outline text-black">Contact us</button>
                     </div>
@@ -31,7 +31,7 @@ const Banner = () => {
                 <a href="#slide1" className="btn btn-circle  bg-amber-400">❮</a>
                 <div>
                     <h1 className=" animate__animated animate__backInRight font-semibold text-3xl text-white mb-4">Stronger & Stronger <br /> Gym Fitness <span className="text-amber-400 ">Everyday</span> </h1>
-                    <div className="space-x-8">
+                    <div className="md:space-x-8 space-x-2">
                         <button className="btn transition delay-150 duration-300 ease-in-out bg-amber-400 text-white">Get started</button>
                         <button className="btn  btn-outline text-white">Contact us</button>
                     </div>
@@ -46,7 +46,7 @@ const Banner = () => {
                 <a href="#slide2" className="btn btn-circle  bg-amber-400">❮</a>
                 <div>
                     <h1 className="animate__animated animate__backInDown font-semibold text-3xl text-white mb-4">Is Enough <br /> To Keep <span className="text-amber-400 ">Your Fitness Level</span> </h1>
-                    <div className="space-x-8">
+                    <div className="md:space-x-8 space-x-2">
                         <button className="btn bg-amber-400 text-white">Get started</button>
                         <button className="btn  btn-outline text-white">Contact us</button>
                     </div>

@@ -16,6 +16,7 @@ import ManageClass from "../pages/Dashboard/ManageClass/ManageClass";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import EnrollClass from "../pages/Dashboard/EnrollClass/EnrollClass";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
+import ModalOpen from "../pages/Dashboard/ModalOpen";
 
 
 export const router = createBrowserRouter([
@@ -89,5 +90,10 @@ export const router = createBrowserRouter([
          }
        
       ]
+    },
+    {
+      path:'modal/:id',
+      element:<ModalOpen></ModalOpen>,
+      
     }
   ]);

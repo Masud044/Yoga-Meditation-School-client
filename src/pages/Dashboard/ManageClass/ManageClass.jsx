@@ -1,74 +1,84 @@
 import { useState } from "react";
 import useClass from "../../../Hooks/useClass";
+import Modal from 'react-modal';
+import ModalOpen from "../ModalOpen";
+import { Link } from "react-router-dom";
 
 
 
 const ManageClass = () => {
+
+
+    const [classSection] = useClass();
+    const [newclass, setNewclass] = useState([]);
+    const [isDisabled, setIsDisabled] = useState([]);
+
+
    
-   
-    const [classSection] =useClass();
-    const [newclass,setNewclass]= useState([]);
-    const [isDisabled,setIsDisabled]= useState([]);
-   
+
 
 
     const handleApproveClick = item => {
-          
-          fetch(`http://localhost:5000/class/${item._id}`,{
-             method:'PATCH',
-             headers:{
-                'content-type':'application/json',
-             },
-             body:JSON.stringify({status:'Approved'})
-          })
-          .then(res=>res.json())
-          .then(data=>{
-              console.log(data);
-              if(data.modifiedCount>0){
-                setIsDisabled((pre) => 
-                    [...pre, item._id,] 
-                    );
-                 const remain = classSection.filter(section=>section._id!== item._id);
-                 const updated = classSection.find(section=>section._id===item._id);
-                 updated.status = 'Approved';
-                 const newclass = [updated,...remain];
-                 setNewclass(newclass)
-                
-               
-              }
-          })
-      };
 
-     const  handleDeny=item=>{
-        fetch(`http://localhost:5000/class/${item._id}`,{
-            method:'PATCH',
-            headers:{
-               'content-type':'application/json',
+        fetch(`http://localhost:5000/class/${item._id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
             },
-            body:JSON.stringify({status:'Deny'})
-         })
-         .then(res=>res.json())
-         .then(data=>{
-             console.log(data);
-             if(data.modifiedCount>0){
-               setIsDisabled((pre) => [...pre, item._id]);
-                const remain = classSection.filter(section=>section._id!== item._id);
-                const updated = classSection.find(section=>section._id===item._id);
-                updated.status = 'Deny';
-                const newclass = [updated,...remain];
-                setNewclass(newclass)
-               
-              
-             }
-         })
-         
-     }
+            body: JSON.stringify({ status: 'Approved' })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    setIsDisabled((pre) =>
+                        [...pre, item._id,]
+                    );
+                    const remain = classSection.filter(section => section._id !== item._id);
+                    const updated = classSection.find(section => section._id === item._id);
+                    updated.status = 'Approved';
+                    const newclass = [updated, ...remain];
+                    setNewclass(newclass)
+
+
+                }
+            })
+    };
+
+    const handleDeny = item => {
+        fetch(`http://localhost:5000/class/${item._id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify({ status: 'Deny' })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    setIsDisabled((pre) => [...pre, item._id]);
+                    const remain = classSection.filter(section => section._id !== item._id);
+                    const updated = classSection.find(section => section._id === item._id);
+                    updated.status = 'Deny';
+                    const newclass = [updated, ...remain];
+                    setNewclass(newclass)
+
+
+                }
+            })
+
+    }
+
+   
+
+
     return (
         <div>
-              <h2 className="font-bold text-3xl  text-center mb-4">Manage Class{classSection.length}</h2>
+            <h2 className="font-bold text-3xl  text-center mb-4">Manage Class{classSection.length}</h2>
 
 
-              <div className="overflow-x-auto">
+            <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
                     <thead>
@@ -86,13 +96,13 @@ const ManageClass = () => {
                             <th>status</th>
                             <th>Approved</th>
                             <th>Deny</th>
-                         
+
                             <th>Feedback</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                           classSection.map((item, index) => <tr key={item._id} >
+                            classSection.map((item, index) => <tr key={item._id} >
                                 <td>
                                     {index + 1}
                                 </td>
@@ -112,30 +122,32 @@ const ManageClass = () => {
                                 <td>{item?.instructorName}</td>
 
                                 <td>
-                                {item.email} 
+                                    {item.email}
                                 </td>
                                 <td>
-                                  {item.availableSeats}
+                                    {item.availableSeats}
                                 </td>
                                 <td>
-                                  ${item.price}
+                                    ${item.price}
                                 </td>
                                 <td className="font-bold">
-                                 {
-                                     item.status
-                                 }
-                                 
-                              
+                                    {
+                                        item.status
+                                    }
+
+
                                 </td>
                                 <td>
-                                <button disabled={isDisabled.includes(item._id)}  onClick={()=>handleApproveClick(item)} className="btn btn-ghost bg-amber-400  text-black">Approved</button>
+                                    <button disabled={isDisabled.includes(item._id)} onClick={() => handleApproveClick(item)} className="btn btn-ghost bg-amber-400  text-black">Approved</button>
                                 </td>
                                 <td>
-                                <button onClick={()=>handleDeny(item)}  disabled={isDisabled.includes(item._id)} className="btn  bg-amber-400 ">deny</button>
+                                    <button onClick={() => handleDeny(item)} disabled={isDisabled.includes(item._id)} className="btn  bg-amber-400 ">deny</button>
                                 </td>
                                 <td>
-                                <button  className="btn btn-outline ">Feedback</button>
-                                </td>
+                                    <Link to={`/modal/${item._id}`}> <button  className="btn  bg-amber-400 ">Feedback</button></Link>
+                               
+                                   
+                                  </td>
                             </tr>)
                         }
 

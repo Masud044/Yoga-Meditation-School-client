@@ -47,10 +47,10 @@ const InstructorClass = () => {
                                 <td>{item.status}</td>
 
                                 <td>
-                                   {item.enroll_student}
+                                  {item?.enroll_student}
                                 </td>
                                 <td>
-                                   no feedback
+                                  {item.feedback}
                                 </td>
                             </tr>)
                         }

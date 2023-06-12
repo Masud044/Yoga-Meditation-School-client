@@ -76,6 +76,13 @@ const CheckoutForm = ({image,className,price,ClassId,_id}) => {
         setProcessing(false);
 
         if(paymentIntent.status==='succeeded'){
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Successfully Payment',
+                showConfirmButton: false,
+                timer: 1500
+              })
             setTransactionId(paymentIntent.id);
 
              const payment = {email:user?.email,transactionId:paymentIntent.id,
@@ -99,7 +106,7 @@ const CheckoutForm = ({image,className,price,ClassId,_id}) => {
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
-                        title: 'Successfully Payment',
+                        title: 'Successfully inserted',
                         showConfirmButton: false,
                         timer: 1500
                       })
